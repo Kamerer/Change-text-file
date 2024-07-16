@@ -1,7 +1,12 @@
-const express = require('express');
-const multer = require('multer');
-const fs = require('fs');
-const path = require('path');
+import express from 'express';
+import multer from 'multer';
+import {listToString} from './listToStringWithQuotes.js';
+import fs from 'fs';
+import path from 'path';
+// const express = require('express');
+// const multer = require('multer');
+//const fs = require('fs');
+//const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -21,8 +26,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
     const fileContent = req.file.buffer.toString('utf8');
 
     // Изменение содержимого файла
-    const modifiedContent = fileContent.toLowerCase().replace(/\r\n/g, '\'\,\'').replace(/^/, '\'').replace(/$/, '\'');
-
+    const modifiedContent = listToString(fileContent)
     res.send(modifiedContent);
 });
 
