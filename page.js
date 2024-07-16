@@ -1,20 +1,20 @@
 document.getElementById('fileInput').addEventListener('change', handleFileSelect);
 document.getElementById('uploadButton').addEventListener('click', uploadFile);
-//document.getElementById('modifyFile').addEventListener('click', modifyFile);
+document.getElementById('modifyFile').addEventListener('click', modifyFile);
 
 let selectedFile = null;
+const formData = new FormData();
 
 function handleFileSelect(event) {
     selectedFile = event.target.files[0];
-    document.getElementById('uploadButton').disabled = true;
-    //document.getElementById('modifyFile').disabled = true;
+    document.getElementById('uploadButton').disabled = !selectedFile;
+    document.getElementById('modifyFile').disabled = !selectedFile;
 }
 
 function uploadFile() {
     if (!selectedFile) {
         return;
     }
-    const formData = new FormData();
     formData.append('file', selectedFile);
 }
 function modifyFile() {
