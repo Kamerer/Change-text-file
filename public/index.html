@@ -7,9 +7,18 @@
 </head>
 <body>
     <h1>File Reader and Modifier</h1>
-    <input type="file" id="fileInput">
+
+    <label for="textInput">Text Input:</label>
+    <input type="text" id="textInput" name="textInput" required><br><br>
+        
+    <label for="fileInput">File Input:</label>
+    <input type="file" id="fileInput" name="fileInput" required><br><br>
+        
     <button id="uploadButton" disabled>Upload File</button>
     <button id="modifyButton" disabled>Modify File</button>
+
+
+
     <pre id="rawText"></pre>
     <pre id="fileContent"></pre>
     <a id="downloadLink" style="display: none;">Download Modified File</a>
