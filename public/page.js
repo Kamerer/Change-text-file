@@ -1,6 +1,6 @@
 document.getElementById('fileInput').addEventListener('change', handleFileSelect);
 document.getElementById('uploadButton').addEventListener('click', uploadFile);
-document.getElementById('modifyFile').addEventListener('click', modifyFile);
+document.getElementById('modifyButton').addEventListener('click', modifyFile);
 
 let selectedFile = null;
 const formData = new FormData();
@@ -8,7 +8,7 @@ const formData = new FormData();
 function handleFileSelect(event) {
     selectedFile = event.target.files[0];
     document.getElementById('uploadButton').disabled = !selectedFile;
-    document.getElementById('modifyFile').disabled = !selectedFile;
+    document.getElementById('modifyButton').disabled = !selectedFile;
 }
 
 function uploadFile() {
@@ -16,6 +16,7 @@ function uploadFile() {
         return;
     }
     formData.append('file', selectedFile);
+    document.getElementById('rawText').textContent = formData;
 }
 function modifyFile() {
     fetch('/upload', {
