@@ -24,5 +24,3 @@ function processFile(filePath) {
   });
 }
 
-// Вызываем функцию обработки файла
-processFile(filePath);

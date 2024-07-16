@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Reader and Modifier</title>
+</head>
+<body>
+    <h1>File Reader and Modifier</h1>
+    <input type="file" id="fileInput">
+    <button id="uploadButton" disabled>Upload and Modify File</button>
+    <pre id="fileContent"></pre>
+    <a id="downloadLink" style="display: none;">Download Modified File</a>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+        document.getElementById('uploadButton').addEventListener('click', uploadFile);
+
+        let selectedFile = null;
+
+        function handleFileSelect(event) {
+            selectedFile = event.target.files[0];
+            document.getElementById('uploadButton').disabled = !selectedFile;
+        }
+
+        function uploadFile() {
+            if (!selectedFile) {
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(modifiedContent => {
+                document.getElementById('fileContent').textContent = modifiedContent;
+
+                // Создание нового Blob с измененным содержимым
+                const blob = new Blob([modifiedContent], { type: 'text/plain' });
+
+                // Создание ссылки для скачивания измененного файла
+                const downloadLink = document.getElementById('downloadLink');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = 'modified_file.txt';
+                downloadLink.textContent = 'Download Modified File';
+                downloadLink.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
