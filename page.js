@@ -1,13 +1,13 @@
 document.getElementById('fileInput').addEventListener('change', handleFileSelect);
 document.getElementById('uploadButton').addEventListener('click', uploadFile);
-document.getElementById('modifyFile').addEventListener('click', modifyFile);
+//document.getElementById('modifyFile').addEventListener('click', modifyFile);
 
 let selectedFile = null;
 
 function handleFileSelect(event) {
     selectedFile = event.target.files[0];
     document.getElementById('uploadButton').disabled = true;
-    document.getElementById('modifyFile').disabled = true;
+    //document.getElementById('modifyFile').disabled = true;
 }
 
 function uploadFile() {
