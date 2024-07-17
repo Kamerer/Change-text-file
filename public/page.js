@@ -2,21 +2,28 @@ document.getElementById('textInput').addEventListener('keydown', handleTextSelec
 document.getElementById('fileInput').addEventListener('change', handleFileSelect);
 
 //document.getElementById('uploadButton').addEventListener('click', uploadFile);
-document.getElementById('modifyButton').addEventListener('click', modifyFile);
+document.getElementById('modifyButton').addEventListener('click', addQuotes);
+document.getElementById('modifyButton2').addEventListener('click', removeDoubleSigns);
 
 let selectedFile = null;
-let selectedText = '111';
+let selectedText = '';
+let action = '';
+
+function buttonEnabler() {
+    document.getElementById('modifyButton').disabled = false;
+    document.getElementById('modifyButton2').disabled = false;
+}
 
 function handleTextSelect(event) {
     if (event.key === "Enter") {
-        document.getElementById('modifyButton').disabled = false;
+        buttonEnabler();
         selectedText = document.getElementById('textInput').value;
         console.log('Selected text from input:' + selectedText);
     }
 }
 function handleFileSelect(event) {
     selectedFile = event.target.files[0];
-    document.getElementById('modifyButton').disabled = !selectedFile;
+    buttonEnabler();
 
     if (selectedFile) {
         // Создаем FileReader для чтения файла
@@ -37,8 +44,14 @@ function handleFileSelect(event) {
         console.log('Файл не выбран');
     }
 }
+function addQuotes() {
+    modifyText('addQuotes')
+}
+function removeDoubleSigns() {
+    modifyText('removeDoubleSigns')
+}
 
-function modifyFile() {
+function modifyText(action) {
     if (!selectedText) {
         console.error('No text selected');
         return;
@@ -50,7 +63,10 @@ function modifyFile() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ text: selectedText })
+        body: JSON.stringify({ 
+            text: selectedText,
+            action: action
+         })
     })
     .then(response => {
         if (!response.ok) {

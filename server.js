@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
-import { listToString } from './listToStringWithQuotes.js';
+import { addQuotes } from './manipulationsWithText.js';
+import { removeDoubleSigns } from './manipulationsWithText.js';
 
 const app = express();
 const port = 3000;
@@ -18,8 +19,14 @@ app.post('/upload', (request, response) => {
 
     const text = request.body.text;
     console.log('Processing text:', text);
-
-    const modifiedContent = listToString({ text });
+    let modifiedContent = null;
+    //console.log(request.body.action);
+    if (request.body.action == 'addQuotes') {
+        modifiedContent = addQuotes({ text });
+        //console.log('Quotes added: ', modifiedContent);
+    } else if(request.body.action == 'removeDoubleSigns') {
+        modifiedContent = removeDoubleSigns({ text });
+    }
     console.log('Modified content:', modifiedContent);
 
     response.json({ modifiedContent });
