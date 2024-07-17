@@ -1,33 +1,28 @@
 import express from 'express';
-import multer from 'multer';
-import {listToString} from './listToStringWithQuotes.js';
-import fs from 'fs';
-import path from 'path';
-// const express = require('express');
-// const multer = require('multer');
-//const fs = require('fs');
-//const path = require('path');
+import morgan from 'morgan';
+import { listToString } from './listToStringWithQuotes.js';
 
 const app = express();
 const port = 3000;
 
-// Настройка multer для обработки загрузки файлов
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-
+app.use(morgan('combined')); // Логирование HTTP-запросов
 app.use(express.static('public'));
+app.use(express.json());
 
-// Обработка загрузки файла и его изменения
-app.post('/upload', upload.single('file'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).send('No file uploaded.');
+app.post('/upload', (request, response) => {
+    console.log('Received request:', request.body);
+    if (!request.body || !request.body.text) {
+        console.error('No text provided');
+        return response.status(400).json({ error: 'No text provided.' });
     }
 
-    const fileContent = req.file.buffer.toString('utf8');
+    const text = request.body.text;
+    console.log('Processing text:', text);
 
-    // Изменение содержимого файла
-    const modifiedContent = listToString(fileContent)
-    res.send(modifiedContent);
+    const modifiedContent = listToString({ text });
+    console.log('Modified content:', modifiedContent);
+
+    response.json({ modifiedContent });
 });
 
 app.listen(port, () => {
