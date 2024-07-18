@@ -1,6 +1,7 @@
 export function addQuotes(jsonContent) {
+    //console.log(jsonContent);
     if (jsonContent && jsonContent.text) {
-        return jsonContent.text.toLowerCase().replace(/\r\n/g, '\'\,\'').replace(/^/, '\'').replace(/$/, '\'');
+        return jsonContent.text.toLowerCase().replace(/\n/g, '\'\,\'').replace(/\r/g, '').replace(/^/, '\'').replace(/$/, '\'');
     } else {
         return 'Invalid content';
     }

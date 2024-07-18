@@ -1,0 +1,35 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+h1 {
+    color: blue;
+    text-align: center;
+}
+.auto-resize-input {
+    width: auto;
+    min-width: 50px; /* Минимальная ширина */
+    min-height: 100px; /* Минимальная ширина */
+    box-sizing: content-box; /* Учитывает только содержимое */
+}
+.buttons {
+    text-align: center;
+    height: 10vh; /* Высота контейнера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rawText {
+    text-align: center;
+    height: 10vh; /* Высота контейнера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.resultText {
+    text-align:left;
+    height: 10vh; /* Высота контейнера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

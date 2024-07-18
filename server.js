@@ -1,14 +1,18 @@
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+
 import { addQuotes } from './manipulationsWithText.js';
 import { removeDoubleSigns } from './manipulationsWithText.js';
-
 const app = express();
 const port = 3000;
 
 app.use(morgan('combined')); // Логирование HTTP-запросов
 app.use(express.static('public'));
-app.use(express.json());
+//app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
 
 app.post('/upload', (request, response) => {
     console.log('Received request:', request.body);

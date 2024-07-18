@@ -6,8 +6,10 @@ document.getElementById('modifyButton').addEventListener('click', addQuotes);
 document.getElementById('modifyButton2').addEventListener('click', removeDoubleSigns);
 
 let selectedFile = null;
-let selectedText = '';
-let action = '';
+let inputInfo = {
+    text: null,
+    action: ''
+}
 
 function buttonEnabler() {
     document.getElementById('modifyButton').disabled = false;
@@ -17,8 +19,10 @@ function buttonEnabler() {
 function handleTextSelect(event) {
     if (event.key === "Enter") {
         buttonEnabler();
-        selectedText = document.getElementById('textInput').value;
-        console.log('Selected text from input:' + selectedText);
+        inputInfo.text = document.getElementById('textInput').value;
+        console.log('Selected text from input:' + inputInfo.text);
+        document.getElementById('rawText').textContent = inputInfo.text;
+
     }
 }
 function handleFileSelect(event) {
@@ -31,11 +35,10 @@ function handleFileSelect(event) {
 
         // Определяем, что делать, когда файл будет прочитан
         reader.onload = function(e) {
-            selectedText = e.target.result;
-            console.log('Содержимое файла:', selectedText);
+            inputInfo.text = e.target.result;
+            console.log('Содержимое файла:', inputInfo.text);
 
-            // Выводим содержимое файла в элемент с id "output"
-            document.getElementById('rawText').textContent = selectedText;
+            document.getElementById('rawText').textContent = inputInfo.text;
         };
         // Читаем файл как текст
         reader.readAsText(selectedFile);
@@ -45,28 +48,27 @@ function handleFileSelect(event) {
     }
 }
 function addQuotes() {
-    modifyText('addQuotes')
+    inputInfo.action = 'addQuotes';
+    modifyText();
 }
 function removeDoubleSigns() {
-    modifyText('removeDoubleSigns')
+    inputInfo.action = 'removeDoubleSigns';
+    modifyText();
 }
 
-function modifyText(action) {
-    if (!selectedText) {
+function modifyText() {
+    if (!inputInfo.text) {
         console.error('No text selected');
         return;
     }
 
-    console.log('Sending text to server:', selectedText);
+    console.log('Sending text to server:', inputInfo.text);
     fetch('/upload', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ 
-            text: selectedText,
-            action: action
-         })
+        body: JSON.stringify(inputInfo)
     })
     .then(response => {
         if (!response.ok) {
@@ -81,7 +83,8 @@ function modifyText(action) {
         }
     })
     .then(modifiedContent => {
-        const modifiedContentString = JSON.stringify(modifiedContent, null, 2);
+        const modifiedContentString = JSON.stringify(modifiedContent.modifiedContent, null, 2);
+        document.getElementById('resultText').textContent = modifiedContentString;
         // Создание нового Blob с измененным содержимым
         const blob = new Blob([modifiedContentString], { type: 'application/json' });
 
