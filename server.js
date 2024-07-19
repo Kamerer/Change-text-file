@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 
 import { addQuotes } from './manipulationsWithText.js';
 import { removeDoubleSigns } from './manipulationsWithText.js';
+import { directTranslation } from './manipulationsWithText.js';
 const app = express();
 const port = 3000;
 
@@ -31,6 +32,8 @@ app.post('/upload', (request, response) => {
         //console.log('Quotes added: ', modifiedContent);
     } else if(request.body.action == 'removeDoubleSigns') {
         modifiedContent = removeDoubleSigns({ text });
+    } else if(request.body.action == 'directTranslation') {
+        modifiedContent = directTranslation({ text });
     }
     console.log('Modified content:', modifiedContent);
 

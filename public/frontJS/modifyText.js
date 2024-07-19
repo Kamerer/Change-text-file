@@ -6,6 +6,10 @@ function removeDoubleSigns() {
     inputInfo.action = 'removeDoubleSigns';
     modifyText();
 }
+function directTranslation() {
+    inputInfo.action = 'directTranslation';
+    modifyText();
+}
 
 function modifyText() {
     makeVisible("result");

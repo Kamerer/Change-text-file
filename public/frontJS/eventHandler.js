@@ -3,6 +3,7 @@ document.getElementById('fileInput').addEventListener('change', handleFileSelect
 
 document.getElementById('modifyButton').addEventListener('click', addQuotes);
 document.getElementById('modifyButton2').addEventListener('click', removeDoubleSigns);
+document.getElementById('modifyButton3').addEventListener('click', directTranslation);
 document.getElementById('copyTextButton').addEventListener('click', copyText);
 
 let selectedFile = null;
