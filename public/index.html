@@ -9,9 +9,9 @@
 <body>
     <h1>File Reader and Modifier</h1>
     <label for="myTextarea">Enter your text:</label><br>
-    <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="8" cols="30" required>Example
+    <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="5" cols="30" required>Example
 Example!!!!
-Пример</textarea>
+Пример"</textarea>
     <br>
     <br>
         
@@ -30,7 +30,7 @@ Example!!!!
     </div>
     <h4>Result:</h4>
 
-    <div>
+    <div class="buttons">
         <button id="copyTextButton" disabled>Скопировать текст</button>
     </div>
     <div class="resultText">    
@@ -40,9 +40,9 @@ Example!!!!
     <img src="download_pictogramm.png" width="20" height=auto alt="download image">
     <a id="downloadLink" style="display: none;">Download Modified File</a>
 
-    <script src="./frontJS/buttonsEnabler.js"></script>
-    <script src="./frontJS/modifyText.js"></script>
-    <script src="./frontJS/copyToBuffer.js"></script>
-    <script src="./frontJS/eventHandler.js"></script>
+    <script src="./frontJS/buttonsEnabler.js" defer></script>
+    <script src="./frontJS/modifyText.js" defer></script>
+    <script src="./frontJS/copyToBuffer.js" defer></script>
+    <script src="./frontJS/eventHandler.js" defer></script>
 </body>
 </html>
