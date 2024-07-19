@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Reader and Modifier</title>
+    <title>Text Reader and Modifier</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>File Reader and Modifier</h1>
-    <label for="myTextarea">Enter your text:</label><br>
-    <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="5" cols="30" required>Example
+    <h1>Text Reader and Modifier</h1>
+    <h4>Enter your text:</h4>
+    <div class="rawText">
+        <label for="myTextarea"></label>
+        <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="5" cols="30" required>Example
 Example!!!!
 Пример"</textarea>
+    </div>
     <br>
     <br>
         
@@ -23,22 +26,19 @@ Example!!!!
         <button id="modifyButton" disabled>Add quotes</button>
         <button id="modifyButton2" disabled>Remove double signs</button>
     </div> 
- 
-    <h4>Your text:</h4>
-    <div class="rawText">    
-        <pre id="rawText"></pre>
+    <div id="result" class="hidden">
+        <h4>Result:</h4>
+        <div class="buttons">
+            <button id="copyTextButton" disabled>Copy result 🖨</button>
+        </div>
+        <div class="resultText">    
+            <textarea type="text" id="resultText" name="resultText" rows="3" cols="100" required></textarea>
+        </div>
+        
+        <img src="download_pictogramm.png" width="20" height=auto alt="download image">
+        <a id="downloadLink" style="display: none;">Download Modified File</a>
     </div>
-    <h4>Result:</h4>
 
-    <div class="buttons">
-        <button id="copyTextButton" disabled>Скопировать текст</button>
-    </div>
-    <div class="resultText">    
-        <textarea type="text" id="resultText" name="resultText" rows="3" cols="100" required></textarea>
-    </div>
-
-    <img src="download_pictogramm.png" width="20" height=auto alt="download image">
-    <a id="downloadLink" style="display: none;">Download Modified File</a>
 
     <script src="./frontJS/buttonsEnabler.js" defer></script>
     <script src="./frontJS/modifyText.js" defer></script>

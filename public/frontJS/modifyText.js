@@ -8,6 +8,7 @@ function removeDoubleSigns() {
 }
 
 function modifyText() {
+    makeVisible("result");
     if (!inputInfo.text) {
         console.error('No text selected');
         return;
