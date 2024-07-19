@@ -4,6 +4,8 @@ document.getElementById('fileInput').addEventListener('change', handleFileSelect
 //document.getElementById('uploadButton').addEventListener('click', uploadFile);
 document.getElementById('modifyButton').addEventListener('click', addQuotes);
 document.getElementById('modifyButton2').addEventListener('click', removeDoubleSigns);
+document.getElementById('copyTextButton').addEventListener('click', copyText);
+
 
 let selectedFile = null;
 let inputInfo = {
@@ -14,6 +16,8 @@ let inputInfo = {
 function buttonEnabler() {
     document.getElementById('modifyButton').disabled = false;
     document.getElementById('modifyButton2').disabled = false;
+    document.getElementById('copyTextButton').disabled = false;
+
 }
 
 function handleTextSelect(event) {
@@ -83,7 +87,7 @@ function modifyText() {
         }
     })
     .then(modifiedContent => {
-        const modifiedContentString = JSON.stringify(modifiedContent.modifiedContent, null, 2);
+        const modifiedContentString = JSON.stringify(modifiedContent.modifiedContent);
         document.getElementById('resultText').textContent = modifiedContentString;
         // Создание нового Blob с измененным содержимым
         const blob = new Blob([modifiedContentString], { type: 'application/json' });
@@ -99,4 +103,16 @@ function modifyText() {
         console.error('Error:', error);
     });
 
+}
+
+function copyText() {
+    // Получаем элемент textarea
+    var textArea = document.getElementById("resultText");
+    console.log('fffff');
+    // Копируем текст в буфер обмена с использованием Clipboard API
+    navigator.clipboard.writeText(textArea.value).then(function() {
+        console.log("Текст скопирован: " + textArea.value);
+    }).catch(function(err) {
+        console.error("Ошибка копирования текста: ", err);
+    });
 }

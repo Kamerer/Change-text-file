@@ -3,12 +3,12 @@ body {
     font-family: Arial, sans-serif;
 }
 h1 {
-    color: blue;
+    color: rgb(0, 0, 0);
     text-align: center;
 }
 .auto-resize-input {
     width: auto;
-    min-width: 50px; /* Минимальная ширина */
+    min-width: 10px; /* Минимальная ширина */
     min-height: 100px; /* Минимальная ширина */
     box-sizing: content-box; /* Учитывает только содержимое */
 }

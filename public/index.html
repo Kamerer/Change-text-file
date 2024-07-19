@@ -8,8 +8,6 @@
 </head>
 <body>
     <h1>File Reader and Modifier</h1>
-
-    
     <label for="myTextarea">Enter your text:</label><br>
     <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="8" cols="30" required>Example
 Example!!!!
@@ -31,8 +29,12 @@ Example!!!!
         <pre id="rawText"></pre>
     </div>
     <h4>Result:</h4>
+
+    <div>
+        <button id="copyTextButton" disabled>Скопировать текст</button>
+    </div>
     <div class="resultText">    
-        <pre id="resultText" placeholder="Enter your text here"></pre>
+        <textarea type="text" id="resultText" name="resultText" rows="3" cols="100" required></textarea>
     </div>
 
     <img src="download_pictogramm.png" width="20" height=auto alt="download image">
