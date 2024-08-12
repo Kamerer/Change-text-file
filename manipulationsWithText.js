@@ -17,8 +17,8 @@ export function directTranslation(jsonContent) {
     const dictionary = {
         all: 'qwertyuiop[]asdfghjkl;\'zxcvbnm,./',
         'q': 'й',
-        w: 'ц',
-        e: 'у',
+        'w': 'ц',
+        'e': 'у',
         'r': 'к',
         't': 'е',
         'y': 'н',
@@ -53,12 +53,12 @@ export function directTranslation(jsonContent) {
     let stringText = jsonContent.text;
     let result = '';
     for (let digit of stringText) {
-        if (dictionary.all.includes(digit)) {
-            result += dictionary[digit];
+        if (dictionary.all.includes(digit.toLowerCase())) {
+            result += dictionary[digit.toLowerCase()];
         } else {
             result += digit;
         }
     }
     console.log(result);
-    return {result};
+    return result;
 }
