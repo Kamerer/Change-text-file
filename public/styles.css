@@ -24,6 +24,7 @@ h1 {
     
 }
 button {
+    margin-bottom: 10px;
     width: 150px; /* Фиксированная ширина */
     height: 20px; /* Фиксированная высота */
     border:black;
@@ -41,17 +42,28 @@ button:disabled {
 }
 .rawText {
     text-align: center;
-    height: 15vh; /* Высота контейнера */
+    height: 5vh; /* Высота контейнера */
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-right: 50%;
+}
+.rawText label {
+    margin-right: 10px;
 }
 .findAndReplaceText {
-    text-align: left;
-    height: 10vh; /* Высота контейнера */
+    text-align: center;
+    height: 5vh; /* Высота контейнера */
     display: flex;
-    justify-content: left;
+    justify-content: right;
     align-items: center;
+    margin-bottom: 5px;
+    margin-right: 50%;
+}
+.findAndReplaceText label {
+    margin-right: 10px;
 }
 .resultText {
     text-align:left;

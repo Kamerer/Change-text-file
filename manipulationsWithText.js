@@ -59,7 +59,6 @@ export function directTranslation(jsonContent) {
             result += digit;
         }
     }
-    console.log(result);
     return result;
 }
 
@@ -68,6 +67,5 @@ export function findAndReplace(jsonContent) {
     let findText = jsonContent.text.textToFind;
     let replaceText = jsonContent.text.textToReplace;
     let result = text.replaceAll(findText, replaceText);
-    console.log(result);
     return result;
 }

@@ -7,29 +7,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Find and Replace</h1>
-
+    
     <button id="gotoMainPage">На главную</button>
     <button id="gotoFindAndReplaceButton">Найти и заменить</button>
+    <h1>Find and Replace</h1>
 
     <div class="rawText">
-        <label for="myTextarea"></label>
-        <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="5" cols="30" required>Example
+        <label for="rawText">Enter your text:</label>
+        <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="5" cols="50" required>Example
 Example!!!!
 Пример'''
 ghbdtn rfr ltkf</textarea>
     </div>
-
+    <br>
     <div class="findAndReplaceText">
-        <label for="myTextarea"></label>
-        <textarea type="text" id="textToFind" name="textToFind" class="auto-resize-input" rows="1" cols="30" required>Example</textarea>
+        <label for="findAndReplaceText">Find:</label>
+        <textarea type="text" id="textToFind" name="textToFind" rows="1" cols="50" required>Example</textarea>
     </div>
     <div class="findAndReplaceText">
-        <label for="myTextarea"></label>
-        <textarea type="text" id="textToReplace" name="textToReplace" class="auto-resize-input" rows="1" cols="30" required>Example!</textarea>
+        <label for="findAndReplaceText">Replace:</label>
+        <textarea type="text" id="textToReplace" name="textToReplace"  rows="1" cols="50" required>Example!</textarea>
     </div>
-    <button id="findTextButton">Find text</button>
-    <button id="replaceButton">Replace all</button>
+    <div class="buttons">
+        <button id="findTextButton">Find text</button>
+        <button id="replaceButton">Replace all</button>
+    </div>
     <div id="result" class="hidden">
         <h4>Result:</h4>
         <div class="buttons">
