@@ -69,3 +69,19 @@ export function findAndReplace(jsonContent) {
     let result = text.replaceAll(findText, replaceText);
     return result;
 }
+
+export function findText(jsonContent) {
+    let text = jsonContent.text.text;
+    let findText = jsonContent.text.textToFind;
+    let counter = 0;
+    while (true) {
+        if (text.indexOf(findText) != -1) {
+            counter++;
+            text = text.replace(findText, '');
+            console.log(text);
+        } else {
+            break;
+        }
+    }
+    return counter;
+}

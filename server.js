@@ -5,7 +5,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
-import { addQuotes, removeDoubleSigns, directTranslation, findAndReplace } from './manipulationsWithText.js';
+import * as functions from './manipulationsWithText.js';
 
 const app = express();
 const port = 3000;
@@ -29,19 +29,13 @@ app.post('/upload', (request, response) => {
     const text = request.body.text;
     console.log('Processing text:', text);
     let modifiedContent = null;
-    //console.log(request.body.action);
-    if (request.body.action == 'addQuotes') {
-        modifiedContent = addQuotes({ text });
-        //console.log('Quotes added: ', modifiedContent);
-    } else if(request.body.action == 'removeDoubleSigns') {
-        modifiedContent = removeDoubleSigns({ text });
-    } else if(request.body.action == 'directTranslation') {
-        modifiedContent = directTranslation({ text });
-    } else if(request.body.action == 'findAndReplace') {
-        modifiedContent = findAndReplace({ text });
+    if (typeof functions[request.body.action] === 'function') {
+        modifiedContent = functions[request.body.action]({text});
+        console.log('Modified content:', modifiedContent);
+    } else {
+        console.error(`Функция с именем ${functionName} не найдена`);
     }
-    console.log('Modified content:', modifiedContent);
-
+    
     response.json({ modifiedContent });
 });
 
