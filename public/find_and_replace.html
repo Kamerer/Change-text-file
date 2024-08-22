@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find and Replace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Find and Replace</h1>
+
+    <button id="gotoMainPage">На главную</button>
+    <button id="gotoFindAndReplaceButton">Найти и заменить</button>
+
+    <div class="rawText">
+        <label for="myTextarea"></label>
+        <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="5" cols="30" required>Example
+Example!!!!
+Пример'''
+ghbdtn rfr ltkf</textarea>
+    </div>
+
+    <div class="findAndReplaceText">
+        <label for="myTextarea"></label>
+        <textarea type="text" id="textToFind" name="textInput" class="auto-resize-input" rows="1" cols="30" required>Example</textarea>
+    </div>
+    <div class="findAndReplaceText">
+        <label for="myTextarea"></label>
+        <textarea type="text" id="textToReplace" name="textInput" class="auto-resize-input" rows="1" cols="30" required>Example!</textarea>
+    </div>
+    <button id="findTextButton">Find text</button>
+    <button id="replaceButton">Replace all</button>
+    
+    <script src="./frontJS/FindPage/changeText.js" defer></script>
+    <script src="./frontJS/FindPage/eventHandler.js" defer></script>
+    <script src="./frontJS/modifyText.js" defer></script>
+    <script src="./frontJS/gotoPage.js" defer></script>
+
+</body>
+</html>

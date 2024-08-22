@@ -41,9 +41,16 @@ button:disabled {
 }
 .rawText {
     text-align: center;
-    height: 10vh; /* Высота контейнера */
+    height: 15vh; /* Высота контейнера */
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+.findAndReplaceText {
+    text-align: left;
+    height: 10vh; /* Высота контейнера */
+    display: flex;
+    justify-content: left;
     align-items: center;
 }
 .resultText {

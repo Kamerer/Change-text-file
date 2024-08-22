@@ -2,13 +2,16 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
+import { addQuotes, removeDoubleSigns, directTranslation } from './manipulationsWithText.js';
 
-import { addQuotes } from './manipulationsWithText.js';
-import { removeDoubleSigns } from './manipulationsWithText.js';
-import { directTranslation } from './manipulationsWithText.js';
 const app = express();
 const port = 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(morgan('combined')); // Логирование HTTP-запросов
 app.use(express.static('public'));
@@ -38,6 +41,10 @@ app.post('/upload', (request, response) => {
     console.log('Modified content:', modifiedContent);
 
     response.json({ modifiedContent });
+});
+
+app.get('/find_and_replace.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'find_and_replace.html'));
 });
 
 app.listen(port, () => {

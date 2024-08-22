@@ -62,3 +62,7 @@ export function directTranslation(jsonContent) {
     console.log(result);
     return result;
 }
+
+export function findAndReplace(jsonContent) {
+
+}

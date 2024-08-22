@@ -8,6 +8,10 @@
 </head>
 <body>
     <h1>Text Reader and Modifier</h1>
+
+    <button id="gotoMainPage">На главную</button>
+    <button id="gotoFindAndReplaceButton">Найти и заменить</button>
+
     <h4>Enter your text:</h4>
     <div class="rawText">
         <label for="myTextarea"></label>
@@ -42,9 +46,12 @@ ghbdtn rfr ltkf</textarea>
     </div>
 
 
-    <script src="./frontJS/buttonsEnabler.js" defer></script>
+    <script src="./frontJS/MainPage/buttonsEnabler.js" defer></script>
+    <script src="./frontJS/MainPage/changeText.js" defer></script>
     <script src="./frontJS/modifyText.js" defer></script>
-    <script src="./frontJS/copyToBuffer.js" defer></script>
-    <script src="./frontJS/eventHandler.js" defer></script>
+    <script src="./frontJS/MainPage/copyToBuffer.js" defer></script>
+    <script src="./frontJS/MainPage/eventHandler.js" defer></script>
+    <script src="./frontJS/gotoPage.js" defer></script>
+
 </body>
 </html>
