@@ -5,7 +5,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
-import { addQuotes, removeDoubleSigns, directTranslation } from './manipulationsWithText.js';
+import { addQuotes, removeDoubleSigns, directTranslation, findAndReplace } from './manipulationsWithText.js';
 
 const app = express();
 const port = 3000;
@@ -37,6 +37,8 @@ app.post('/upload', (request, response) => {
         modifiedContent = removeDoubleSigns({ text });
     } else if(request.body.action == 'directTranslation') {
         modifiedContent = directTranslation({ text });
+    } else if(request.body.action == 'findAndReplace') {
+        modifiedContent = findAndReplace({ text });
     }
     console.log('Modified content:', modifiedContent);
 

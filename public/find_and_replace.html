@@ -22,14 +22,26 @@ ghbdtn rfr ltkf</textarea>
 
     <div class="findAndReplaceText">
         <label for="myTextarea"></label>
-        <textarea type="text" id="textToFind" name="textInput" class="auto-resize-input" rows="1" cols="30" required>Example</textarea>
+        <textarea type="text" id="textToFind" name="textToFind" class="auto-resize-input" rows="1" cols="30" required>Example</textarea>
     </div>
     <div class="findAndReplaceText">
         <label for="myTextarea"></label>
-        <textarea type="text" id="textToReplace" name="textInput" class="auto-resize-input" rows="1" cols="30" required>Example!</textarea>
+        <textarea type="text" id="textToReplace" name="textToReplace" class="auto-resize-input" rows="1" cols="30" required>Example!</textarea>
     </div>
     <button id="findTextButton">Find text</button>
     <button id="replaceButton">Replace all</button>
+    <div id="result" class="hidden">
+        <h4>Result:</h4>
+        <div class="buttons">
+            <button id="copyTextButton" disabled>Copy result 🖨</button>
+        </div>
+        <div class="resultText">    
+            <textarea type="text" id="resultText" name="resultText" rows="3" cols="100" required></textarea>
+        </div>
+        
+        <img src="download_pictogramm.png" width="20" height=auto alt="download image">
+        <a id="downloadLink" style="display: none;">Download Modified File</a>
+    </div>
     
     <script src="./frontJS/FindPage/changeText.js" defer></script>
     <script src="./frontJS/FindPage/eventHandler.js" defer></script>

@@ -64,5 +64,10 @@ export function directTranslation(jsonContent) {
 }
 
 export function findAndReplace(jsonContent) {
-
+    let text = jsonContent.text.text;
+    let findText = jsonContent.text.textToFind;
+    let replaceText = jsonContent.text.textToReplace;
+    let result = text.replaceAll(findText, replaceText);
+    console.log(result);
+    return result;
 }
