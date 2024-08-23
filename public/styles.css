@@ -1,0 +1,82 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 10px;
+    padding: 0;
+}
+h1 {
+    color: #216fc3;
+    text-align: center;
+}
+.auto-resize-input {
+    width: auto;
+    min-width: 10px;
+    min-height: 50px;
+    box-sizing: content-box; /* Учитывает только содержимое */
+}
+.buttons {
+    text-align: center;
+    height: 3vh; /* Высота контейнера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+button {
+    margin-bottom: 10px;
+    width: 150px; /* Фиксированная ширина */
+    height: 20px; /* Фиксированная высота */
+    border:black;
+    border-color: black;
+    border-radius: 7px;
+    background-color: #216fc3;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center; /* Центрирование текста */
+}
+button:disabled {
+    background-color: #5e5a5a;
+    cursor: not-allowed;
+}
+.rawText {
+    text-align: center;
+    height: 5vh; /* Высота контейнера */
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-right: 50%;
+}
+.rawText label {
+    margin-right: 10px;
+}
+.findAndReplaceText {
+    text-align: center;
+    height: 5vh; /* Высота контейнера */
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-right: 50%;
+}
+.findAndReplaceText label {
+    margin-right: 10px;
+}
+.resultText {
+    text-align:left;
+    height: 10vh; /* Высота контейнера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}

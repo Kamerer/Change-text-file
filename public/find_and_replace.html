@@ -3,35 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Reader and Modifier</title>
+    <title>Find and Replace</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
     <button id="gotoMainPage">На главную</button>
     <button id="gotoFindAndReplaceButton">Найти и заменить</button>
+    <h1>Find and Replace</h1>
 
-    <h1>Text Reader and Modifier</h1>
-
-    <h4></h4>
     <div class="rawText">
         <label for="rawText">Enter your text:</label>
-        <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="5" cols="30" required>Example
+        <textarea type="text" id="textInput" name="textInput" class="auto-resize-input" rows="5" cols="50" required>Example
 Example!!!!
 Пример'''
 ghbdtn rfr ltkf</textarea>
     </div>
     <br>
-    <br>
-        
-    <label for="fileInput">Enter your file:</label>
-    <input type="file" id="fileInput" name="fileInput" required>
-    <br>
-    <br>
-    <div class="buttons">   
-        <button id="modifyButton" disabled>Add quotes</button>
-        <button id="modifyButton2" disabled>Remove double signs</button>
-        <button id="modifyButton3" disabled>Translate text directly</button>
-    </div> 
+    <div class="findAndReplaceText">
+        <label for="findAndReplaceText">Find:</label>
+        <textarea type="text" id="textToFind" name="textToFind" rows="1" cols="50" required>Example</textarea>
+    </div>
+    <div class="findAndReplaceText">
+        <label for="findAndReplaceText">Replace:</label>
+        <textarea type="text" id="textToReplace" name="textToReplace"  rows="1" cols="50" required>Example!</textarea>
+    </div>
+    <div class="buttons">
+        <button id="findTextButton">Find text</button>
+        <button id="replaceButton">Replace all</button>
+    </div>
     <div id="result" class="hidden">
         <h4>Result:</h4>
         <div class="buttons">
@@ -44,13 +44,10 @@ ghbdtn rfr ltkf</textarea>
         <img src="download_pictogramm.png" width="20" height=auto alt="download image">
         <a id="downloadLink" style="display: none;">Download Modified File</a>
     </div>
-
-
-    <script src="./frontJS/MainPage/buttonsEnabler.js" defer></script>
-    <script src="./frontJS/MainPage/changeText.js" defer></script>
+    
+    <script src="./frontJS/FindPage/changeText.js" defer></script>
+    <script src="./frontJS/FindPage/eventHandler.js" defer></script>
     <script src="./frontJS/modifyText.js" defer></script>
-    <script src="./frontJS/MainPage/copyToBuffer.js" defer></script>
-    <script src="./frontJS/MainPage/eventHandler.js" defer></script>
     <script src="./frontJS/gotoPage.js" defer></script>
 
 </body>
